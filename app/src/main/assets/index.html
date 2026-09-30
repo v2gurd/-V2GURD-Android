@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"
+>
+
+<title>V2GURD</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    background:#05080d;
+    color:#fff;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+.app{
+    min-height:100vh;
+    padding-bottom:90px;
+}
+
+.header{
+    padding:22px 20px 12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:2px;
+    color:#26e0c9;
+}
+
+.online{
+    font-size:12px;
+    color:#26e0c9;
+    background:rgba(38,224,201,.08);
+    border:1px solid rgba(38,224,201,.2);
+    padding:7px 11px;
+    border-radius:30px;
+}
+
+.page{
+    padding:10px 16px 25px;
+}
+
+.title{
+    font-size:26px;
+    font-weight:900;
+    margin:10px 4px 18px;
+}
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    padding:25px;
+    border-radius:26px;
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(38,224,201,.18),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #101a25,
+            #080d14
+        );
+    border:1px solid rgba(255,255,255,.07);
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:#26e0c9;
+    filter:blur(100px);
+    opacity:.08;
+    left:-50px;
+    bottom:-80px;
+}
+
+.hero-small{
+    color:#9ba6b6;
+    font-size:13px;
+}
+
+.hero h1{
+    margin:8px 0;
+    font-size:31px;
+}
+
+.hero p{
+    color:#a5afbe;
+    line-height:1.9;
+    font-size:14px;
+}
+
+.connect{
+    width:100%;
+    margin-top:15px;
+    border:0;
+    border-radius:17px;
+    padding:16px;
+    background:#26e0c9;
+    color:#03100e;
+    font-size:16px;
+    font-weight:900;
+}
+
+.connect.connected{
+    background:#ff4f6d;
+    color:#fff;
+}
+
+.card{
+    background:#0c121b;
+    border:1px solid rgba(255,255,255,.055);
+    border-radius:21px;
+    padding:18px;
+    margin-top:14px;
+}
+
+.card-title{
+    font-size:16px;
+    font-weight:800;
+}
+
+.muted{
+    color:#929dac;
+    font-size:13px;
+    line-height:1.8;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:14px;
+}
+
+.stat{
+    background:#101822;
+    padding:15px;
+    border-radius:16px;
+}
+
+.stat b{
+    display:block;
+    margin-top:5px;
+    font-size:17px;
+}
+
+.products{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.product{
+    background:#0c121b;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:21px;
+    padding:18px;
+}
+
+.product-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.product-name{
+    font-size:19px;
+    font-weight:900;
+}
+
+.product-tag{
+    color:#26e0c9;
+    font-size:11px;
+}
+
+.product-desc{
+    color:#929dac;
+    margin:10px 0;
+    font-size:13px;
+}
+
+.price{
+    font-size:21px;
+    font-weight:900;
+    color:#fff;
+}
+
+.buy{
+    width:100%;
+    border:0;
+    margin-top:13px;
+    padding:13px;
+    border-radius:14px;
+    background:#26e0c9;
+    font-weight:800;
+}
+
+.input{
+    width:100%;
+    background:#080d13;
+    border:1px solid #1c2937;
+    color:#fff;
+    border-radius:15px;
+    padding:15px;
+    outline:none;
+    direction:ltr;
+    margin-top:10px;
+}
+
+.primary{
+    width:100%;
+    margin-top:12px;
+    border:0;
+    padding:14px;
+    border-radius:15px;
+    background:#26e0c9;
+    font-weight:900;
+}
+
+.secondary{
+    width:100%;
+    margin-top:9px;
+    border:1px solid #243342;
+    padding:13px;
+    border-radius:15px;
+    background:#101822;
+    color:#fff;
+}
+
+.bottom{
+    position:fixed;
+    left:10px;
+    right:10px;
+    bottom:10px;
+    height:67px;
+    border-radius:22px;
+    background:rgba(10,15,23,.96);
+    border:1px solid rgba(255,255,255,.07);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    z-index:100;
+    backdrop-filter:blur(20px);
+}
+
+.nav{
+    border:0;
+    background:none;
+    color:#697585;
+    font-size:11px;
+}
+
+.nav.active{
+    color:#26e0c9;
+    font-weight:800;
+}
+
+.hidden{
+    display:none;
+}
+
+.success{
+    color:#26e0c9;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="header">
+
+<div class="logo">V2GURD</div>
+
+<div class="online">
+● سیستم آماده
+</div>
+
+</header>
+
+
+<main id="home" class="page">
+
+<div class="title">
+داشبورد
+</div>
+
+<section class="hero">
+
+<div class="hero-small">
+اتصال امن V2GURD
+</div>
+
+<h1 id="status">
+آماده اتصال
+</h1>
+
+<p>
+سرویس خودت را انتخاب کن، Subscription را وارد کن
+و از داخل اپ مدیریت کن.
+</p>
+
+<button
+    id="connectBtn"
+    class="connect"
+    onclick="toggleConnection()"
+>
+اتصال
+</button>
+
+</section>
+
+
+<div class="stats">
+
+<div class="stat">
+<span class="muted">وضعیت</span>
+<b id="state">
+قطع
+</b>
+</div>
+
+<div class="stat">
+<span class="muted">سرور</span>
+<b id="server">
+انتخاب نشده
+</b>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+Subscription
+</div>
+
+<div class="muted">
+لینک اشتراک سرویس خودت را وارد کن.
+</div>
+
+<input
+    id="subInput"
+    class="input"
+    placeholder="https://..."
+>
+
+<button
+    class="primary"
+    onclick="saveSubscription()"
+>
+ذخیره Subscription
+</button>
+
+<div
+    id="saved"
+    class="muted success"
+    style="margin-top:10px"
+></div>
+
+</div>
+
+</main>
+
+
+<main id="store" class="page hidden">
+
+<div class="title">
+فروشگاه
+</div>
+
+<div class="products">
+
+<div class="product">
+
+<div class="product-top">
+
+<div class="product-name">
+V2Box
+</div>
+
+<div class="product-tag">
+POPULAR
+</div>
+
+</div>
+
+<div class="product-desc">
+سرویس حرفه‌ای با چندین لوکیشن و اتصال پایدار.
+</div>
+
+<div class="price">
+قیمت محصول
+</div>
+
+<button
+    class="buy"
+    onclick="buy('V2Box')"
+>
+خرید سرویس
+</button>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-top">
+
+<div class="product-name">
+JumpJump
+</div>
+
+<div class="product-tag">
+FIXED IP
+</div>
+
+</div>
+
+<div class="product-desc">
+سرویس اتصال اختصاصی با IP ثابت.
+</div>
+
+<div class="price">
+قیمت محصول
+</div>
+
+<button
+    class="buy"
+    onclick="buy('JumpJump')"
+>
+خرید سرویس
+</button>
+
+</div>
+
+
+<div class="product">
+
+<div class="product-top">
+
+<div class="product-name">
+V2GURD Unlimited
+</div>
+
+<div class="product-tag">
+SPECIAL
+</div>
+
+</div>
+
+<div class="product-desc">
+سرویس ویژه V2GURD با شرایط اختصاصی.
+</div>
+
+<div class="price">
+قیمت محصول
+</div>
+
+<button
+    class="buy"
+    onclick="buy('V2GURD Unlimited')"
+>
+خرید سرویس
+</button>
+
+</div>
+
+</div>
+
+</main>
+
+
+<main id="services" class="page hidden">
+
+<div class="title">
+سرویس من
+</div>
+
+<div class="card">
+
+<div class="card-title">
+سرویس فعال
+</div>
+
+<div
+    id="serviceText"
+    class="muted"
+>
+هنوز Subscription اضافه نکرده‌ای.
+</div>
+
+<button
+    class="secondary"
+    onclick="copySubscription()"
+>
+کپی Subscription
+</button>
+
+</div>
+
+</main>
+
+
+<main id="account" class="page hidden">
+
+<div class="title">
+حساب
+</div>
+
+<div class="card">
+
+<div class="card-title">
+V2GURD
+</div>
+
+<div class="muted">
+مدیریت سرویس، Subscription و پشتیبانی.
+</div>
+
+<button
+    class="primary"
+    onclick="support()"
+>
+پشتیبانی تلگرام
+</button>
+
+</div>
+
+</main>
+
+
+<nav class="bottom">
+
+<button
+    class="nav active"
+    onclick="page('home',this)"
+>
+خانه
+</button>
+
+<button
+    class="nav"
+    onclick="page('store',this)"
+>
+فروشگاه
+</button>
+
+<button
+    class="nav"
+    onclick="page('services',this)"
+>
+سرویس من
+</button>
+
+<button
+    class="nav"
+    onclick="page('account',this)"
+>
+حساب
+</button>
+
+</nav>
+
+</div>
+
+
+<script>
+
+let connected = false;
+
+let subscription =
+    localStorage.getItem("v2gurd_sub") || "";
+
+
+function page(name, element){
+
+    document
+        .querySelectorAll("main")
+        .forEach(x => x.classList.add("hidden"));
+
+    document
+        .getElementById(name)
+        .classList.remove("hidden");
+
+    document
+        .querySelectorAll(".nav")
+        .forEach(x => x.classList.remove("active"));
+
+    element.classList.add("active");
+}
+
+
+function toggleConnection(){
+
+    if(!subscription){
+
+        alert(
+            "اول Subscription سرویس خودت را وارد کن."
+        );
+
+        return;
+    }
+
+    connected = !connected;
+
+    const status =
+        document.getElementById("status");
+
+    const state =
+        document.getElementById("state");
+
+    const button =
+        document.getElementById("connectBtn");
+
+    if(connected){
+
+        status.innerText =
+            "در حال اتصال...";
+
+        state.innerText =
+            "در حال اتصال";
+
+        button.innerText =
+            "در حال اتصال";
+
+        setTimeout(() => {
+
+            status.innerText =
+                "متصل";
+
+            state.innerText =
+                "متصل";
+
+            button.innerText =
+                "قطع اتصال";
+
+            button.classList.add("connected");
+
+            document.getElementById("server")
+                .innerText =
+                "Auto";
+
+        },1200);
+
+    }else{
+
+        status.innerText =
+            "آماده اتصال";
+
+        state.innerText =
+            "قطع";
+
+        button.innerText =
+            "اتصال";
+
+        button.classList.remove("connected");
+
+        document.getElementById("server")
+            .innerText =
+            "انتخاب نشده";
+    }
+}
+
+
+function saveSubscription(){
+
+    const value =
+        document
+        .getElementById("subInput")
+        .value
+        .trim();
+
+    if(!value){
+
+        alert(
+            "لینک Subscription را وارد کن."
+        );
+
+        return;
+    }
+
+    subscription = value;
+
+    localStorage.setItem(
+        "v2gurd_sub",
+        value
+    );
+
+    document
+        .getElementById("saved")
+        .innerText =
+        "✓ Subscription ذخیره شد";
+
+    document
+        .getElementById("serviceText")
+        .innerText =
+        "Subscription فعال است.";
+
+}
+
+
+function copySubscription(){
+
+    if(!subscription){
+
+        alert(
+            "هنوز Subscription ثبت نشده."
+        );
+
+        return;
+    }
+
+    navigator.clipboard
+        .writeText(subscription);
+
+    alert(
+        "Subscription کپی شد."
+    );
+}
+
+
+function buy(product){
+
+    alert(
+        "خرید " +
+        product +
+        "\\n\\nقیمت و پرداخت را در مرحله بعدی به اطلاعات واقعی سایت V2GURD وصل می‌کنیم."
+    );
+
+}
+
+
+function support(){
+
+    window.location.href =
+        "https://t.me/Vtwoguard";
+
+}
+
+
+if(subscription){
+
+    document
+        .getElementById("subInput")
+        .value =
+        subscription;
+
+    document
+        .getElementById("serviceText")
+        .innerText =
+        "Subscription فعال است.";
+
+}
+
+</script>
+
+</body>
+
+</html>
