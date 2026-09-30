@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"
->
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
 <title>V2GURD</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
@@ -21,283 +15,691 @@
 
 html,body{
     margin:0;
-    padding:0;
-    background:#05080d;
-    color:#fff;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial,"Segoe UI",sans-serif;
+    background:#f5f9ff;
+    color:#102033;
 }
 
 body{
-    min-height:100vh;
-    overflow-x:hidden;
+    position:relative;
 }
 
 .app{
-    min-height:100vh;
-    padding-bottom:90px;
+    height:100vh;
+    height:100dvh;
+    display:flex;
+    flex-direction:column;
+    background:
+        radial-gradient(circle at 90% 0%,rgba(34,119,255,.12),transparent 30%),
+        radial-gradient(circle at 0% 45%,rgba(0,194,255,.08),transparent 30%),
+        #f7faff;
 }
 
+/* HEADER */
+
 .header{
-    padding:22px 20px 12px;
+    padding:18px 20px 10px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
-    font-size:27px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logoMark{
+    width:43px;
+    height:43px;
+    border-radius:14px;
+    background:linear-gradient(145deg,#0a7cff,#22d4ff);
+    box-shadow:
+        0 8px 25px rgba(0,126,255,.25),
+        inset 0 1px 1px rgba(255,255,255,.7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
     font-weight:900;
-    letter-spacing:2px;
-    color:#26e0c9;
+    font-size:18px;
 }
 
-.online{
-    font-size:12px;
-    color:#26e0c9;
-    background:rgba(38,224,201,.08);
-    border:1px solid rgba(38,224,201,.2);
-    padding:7px 11px;
-    border-radius:30px;
-}
-
-.page{
-    padding:10px 16px 25px;
-}
-
-.title{
-    font-size:26px;
+.logoText{
+    font-size:20px;
     font-weight:900;
-    margin:10px 4px 18px;
+    letter-spacing:1.5px;
 }
+
+.logoSub{
+    font-size:9px;
+    color:#8291a5;
+    margin-top:2px;
+    letter-spacing:1px;
+}
+
+.profile{
+    width:42px;
+    height:42px;
+    border-radius:14px;
+    background:white;
+    box-shadow:0 7px 25px rgba(35,82,130,.10);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:19px;
+}
+
+/* CONTENT */
+
+.content{
+    flex:1;
+    overflow-y:auto;
+    padding:8px 18px 105px;
+    scrollbar-width:none;
+}
+
+.content::-webkit-scrollbar{
+    display:none;
+}
+
+/* HERO */
 
 .hero{
+    margin-top:5px;
+    padding:25px 22px 24px;
+    border-radius:29px;
+    background:
+        radial-gradient(circle at 85% 15%,rgba(64,210,255,.5),transparent 27%),
+        linear-gradient(135deg,#087cff,#0752d8);
+    color:white;
     position:relative;
     overflow:hidden;
-    padding:25px;
-    border-radius:26px;
-    background:
-        radial-gradient(
-            circle at 90% 0%,
-            rgba(38,224,201,.18),
-            transparent 45%
-        ),
-        linear-gradient(
-            145deg,
-            #101a25,
-            #080d14
-        );
-    border:1px solid rgba(255,255,255,.07);
-    box-shadow:0 20px 50px rgba(0,0,0,.35);
+    box-shadow:
+        0 18px 40px rgba(0,102,230,.23),
+        inset 0 1px rgba(255,255,255,.35);
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:50%;
+    left:-70px;
+    bottom:-95px;
 }
 
 .hero:after{
     content:"";
     position:absolute;
-    width:150px;
-    height:150px;
+    width:120px;
+    height:120px;
+    border:1px solid rgba(255,255,255,.12);
     border-radius:50%;
-    background:#26e0c9;
-    filter:blur(100px);
-    opacity:.08;
-    left:-50px;
-    bottom:-80px;
+    right:-55px;
+    top:-55px;
 }
 
-.hero-small{
-    color:#9ba6b6;
-    font-size:13px;
+.heroSmall{
+    font-size:12px;
+    opacity:.78;
+    margin-bottom:8px;
 }
 
-.hero h1{
-    margin:8px 0;
-    font-size:31px;
-}
-
-.hero p{
-    color:#a5afbe;
-    line-height:1.9;
-    font-size:14px;
-}
-
-.connect{
-    width:100%;
-    margin-top:15px;
-    border:0;
-    border-radius:17px;
-    padding:16px;
-    background:#26e0c9;
-    color:#03100e;
-    font-size:16px;
+.heroTitle{
+    font-size:29px;
     font-weight:900;
+    margin-bottom:8px;
 }
 
-.connect.connected{
-    background:#ff4f6d;
-    color:#fff;
+.heroText{
+    font-size:12px;
+    opacity:.82;
+    line-height:1.9;
+    max-width:270px;
 }
 
-.card{
-    background:#0c121b;
-    border:1px solid rgba(255,255,255,.055);
-    border-radius:21px;
-    padding:18px;
-    margin-top:14px;
+.heroOrb{
+    position:absolute;
+    left:22px;
+    bottom:18px;
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    background:rgba(255,255,255,.1);
+    box-shadow:
+        inset 0 0 20px rgba(255,255,255,.18),
+        0 0 30px rgba(70,220,255,.25);
 }
 
-.card-title{
-    font-size:16px;
-    font-weight:800;
+.heroOrb:after{
+    content:"";
+    position:absolute;
+    inset:13px;
+    border-radius:50%;
+    border:2px solid rgba(255,255,255,.5);
 }
 
-.muted{
-    color:#929dac;
-    font-size:13px;
-    line-height:1.8;
+/* CONNECTION CARD */
+
+.connection{
+    margin-top:16px;
+    padding:20px;
+    background:white;
+    border-radius:28px;
+    box-shadow:0 10px 35px rgba(30,80,130,.09);
+    border:1px solid rgba(30,110,220,.06);
 }
 
-.stats{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-top:14px;
-}
-
-.stat{
-    background:#101822;
-    padding:15px;
-    border-radius:16px;
-}
-
-.stat b{
-    display:block;
-    margin-top:5px;
-    font-size:17px;
-}
-
-.products{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-}
-
-.product{
-    background:#0c121b;
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:21px;
-    padding:18px;
-}
-
-.product-top{
+.connectionTop{
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
-.product-name{
-    font-size:19px;
-    font-weight:900;
-}
-
-.product-tag{
-    color:#26e0c9;
-    font-size:11px;
-}
-
-.product-desc{
-    color:#929dac;
-    margin:10px 0;
+.status{
+    display:flex;
+    align-items:center;
+    gap:9px;
     font-size:13px;
-}
-
-.price{
-    font-size:21px;
-    font-weight:900;
-    color:#fff;
-}
-
-.buy{
-    width:100%;
-    border:0;
-    margin-top:13px;
-    padding:13px;
-    border-radius:14px;
-    background:#26e0c9;
     font-weight:800;
 }
 
-.input{
-    width:100%;
-    background:#080d13;
-    border:1px solid #1c2937;
-    color:#fff;
-    border-radius:15px;
-    padding:15px;
-    outline:none;
-    direction:ltr;
-    margin-top:10px;
+.dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#aab5c3;
+    box-shadow:0 0 0 5px rgba(170,181,195,.12);
 }
 
-.primary{
-    width:100%;
-    margin-top:12px;
-    border:0;
-    padding:14px;
-    border-radius:15px;
-    background:#26e0c9;
-    font-weight:900;
+.dot.connected{
+    background:#10c98a;
+    box-shadow:0 0 0 5px rgba(16,201,138,.13),0 0 15px rgba(16,201,138,.35);
 }
 
-.secondary{
-    width:100%;
-    margin-top:9px;
-    border:1px solid #243342;
-    padding:13px;
-    border-radius:15px;
-    background:#101822;
-    color:#fff;
-}
-
-.bottom{
-    position:fixed;
-    left:10px;
-    right:10px;
-    bottom:10px;
-    height:67px;
-    border-radius:22px;
-    background:rgba(10,15,23,.96);
-    border:1px solid rgba(255,255,255,.07);
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    z-index:100;
-    backdrop-filter:blur(20px);
-}
-
-.nav{
-    border:0;
-    background:none;
-    color:#697585;
+.server{
+    color:#8795a8;
     font-size:11px;
 }
 
-.nav.active{
-    color:#26e0c9;
-    font-weight:800;
+.connectCircle{
+    width:152px;
+    height:152px;
+    margin:22px auto 16px;
+    border-radius:50%;
+    padding:9px;
+    background:linear-gradient(145deg,#e9f3ff,#fff);
+    box-shadow:
+        10px 12px 25px rgba(45,91,140,.12),
+        inset -5px -5px 15px rgba(55,130,220,.08);
 }
 
-.hidden{
+.connectInner{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:linear-gradient(145deg,#087cff,#0054df);
+    box-shadow:
+        inset 5px 5px 14px rgba(255,255,255,.23),
+        inset -8px -10px 18px rgba(0,30,130,.25),
+        0 12px 30px rgba(0,105,255,.3);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.connectInner:active{
+    transform:scale(.95);
+}
+
+.power{
+    font-size:31px;
+    line-height:1;
+}
+
+.connectLabel{
+    margin-top:8px;
+    font-size:12px;
+    font-weight:900;
+}
+
+.connectionBottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:11px;
+    color:#8b98a8;
+}
+
+.protection{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.shield{
+    color:#0a7cff;
+}
+
+/* CARDS */
+
+.sectionHead{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:24px 2px 12px;
+}
+
+.sectionTitle{
+    font-size:16px;
+    font-weight:900;
+}
+
+.sectionMore{
+    color:#087cff;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.card{
+    background:white;
+    border-radius:23px;
+    padding:16px;
+    min-height:130px;
+    box-shadow:0 8px 27px rgba(30,80,130,.08);
+    border:1px solid rgba(20,100,220,.05);
+    position:relative;
+    overflow:hidden;
+}
+
+.cardIcon{
+    width:42px;
+    height:42px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#edf6ff;
+    color:#087cff;
+    font-size:20px;
+    margin-bottom:13px;
+}
+
+.cardTitle{
+    font-size:13px;
+    font-weight:900;
+}
+
+.cardText{
+    font-size:10px;
+    color:#8a97a7;
+    margin-top:5px;
+    line-height:1.7;
+}
+
+.cardGlow{
+    position:absolute;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:rgba(0,130,255,.08);
+    left:-25px;
+    bottom:-25px;
+}
+
+/* PRODUCTS */
+
+.products{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    padding:2px 2px 8px;
+    scrollbar-width:none;
+}
+
+.products::-webkit-scrollbar{
     display:none;
 }
 
-.success{
-    color:#26e0c9;
+.product{
+    min-width:190px;
+    background:#fff;
+    border-radius:24px;
+    padding:17px;
+    box-shadow:0 9px 30px rgba(30,80,130,.08);
+    border:1px solid rgba(30,110,220,.06);
 }
 
-</style>
+.productIcon{
+    height:80px;
+    border-radius:18px;
+    background:
+        radial-gradient(circle at 70% 25%,rgba(50,190,255,.5),transparent 30%),
+        linear-gradient(135deg,#0b82ff,#073bbd);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:30px;
+    margin-bottom:13px;
+}
 
+.productName{
+    font-size:13px;
+    font-weight:900;
+}
+
+.productDesc{
+    font-size:10px;
+    color:#8b98a8;
+    margin:5px 0 12px;
+}
+
+.productBottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.price{
+    font-size:13px;
+    font-weight:900;
+}
+
+.buy{
+    border:0;
+    border-radius:11px;
+    padding:8px 12px;
+    background:#eaf4ff;
+    color:#087cff;
+    font-weight:900;
+    font-size:10px;
+}
+
+/* BOTTOM NAV */
+
+.bottom{
+    position:absolute;
+    bottom:14px;
+    left:16px;
+    right:16px;
+    height:69px;
+    border-radius:25px;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    box-shadow:
+        0 12px 35px rgba(30,75,125,.15),
+        0 1px 0 rgba(255,255,255,.8) inset;
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    z-index:50;
+}
+
+.navItem{
+    width:60px;
+    height:55px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    color:#99a5b4;
+    font-size:10px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.navIcon{
+    font-size:21px;
+}
+
+.navItem.active{
+    color:#087cff;
+}
+
+.navItem.active .navIcon{
+    filter:drop-shadow(0 4px 8px rgba(0,120,255,.25));
+}
+
+/* PAGES */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+    animation:pageIn .28s ease;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ACCOUNT */
+
+.accountBox{
+    background:white;
+    border-radius:28px;
+    padding:24px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(30,80,130,.08);
+}
+
+.avatar{
+    width:82px;
+    height:82px;
+    margin:auto;
+    border-radius:28px;
+    background:linear-gradient(145deg,#087cff,#19caff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:30px;
+    font-weight:900;
+    box-shadow:0 12px 28px rgba(0,110,255,.22);
+}
+
+.accountName{
+    font-size:18px;
+    font-weight:900;
+    margin-top:13px;
+}
+
+.accountText{
+    color:#8b98a8;
+    font-size:11px;
+    margin-top:5px;
+}
+
+.menu{
+    margin-top:14px;
+    background:white;
+    border-radius:23px;
+    overflow:hidden;
+    box-shadow:0 8px 28px rgba(30,80,130,.07);
+}
+
+.menuItem{
+    padding:17px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #f0f3f7;
+    font-size:12px;
+    font-weight:700;
+}
+
+.menuItem:last-child{
+    border-bottom:0;
+}
+
+.menuRight{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.menuIcon{
+    width:36px;
+    height:36px;
+    border-radius:12px;
+    background:#eef6ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#087cff;
+}
+
+/* STORE */
+
+.storeHero{
+    padding:24px;
+    border-radius:28px;
+    background:linear-gradient(135deg,#071d45,#087cff);
+    color:white;
+    box-shadow:0 15px 35px rgba(0,92,220,.2);
+}
+
+.storeHero h2{
+    margin:0 0 8px;
+    font-size:23px;
+}
+
+.storeHero p{
+    margin:0;
+    opacity:.75;
+    font-size:11px;
+    line-height:1.8;
+}
+
+.storeGrid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+    margin-top:15px;
+}
+
+.storeItem{
+    background:white;
+    padding:18px;
+    border-radius:23px;
+    box-shadow:0 8px 27px rgba(30,80,130,.08);
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.storeItemIcon{
+    width:58px;
+    height:58px;
+    border-radius:18px;
+    background:#edf6ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#087cff;
+    font-size:24px;
+}
+
+.storeInfo{
+    flex:1;
+}
+
+.storeName{
+    font-size:13px;
+    font-weight:900;
+}
+
+.storeDesc{
+    font-size:10px;
+    color:#8b98a8;
+    margin-top:4px;
+}
+
+.storeBtn{
+    background:#087cff;
+    border:0;
+    color:white;
+    border-radius:12px;
+    padding:9px 12px;
+    font-size:10px;
+    font-weight:900;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    top:80px;
+    left:50%;
+    transform:translateX(-50%) translateY(-20px);
+    background:#102033;
+    color:white;
+    padding:12px 17px;
+    border-radius:14px;
+    font-size:11px;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    z-index:100;
+    white-space:nowrap;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
+/* SMALL DEVICES */
+
+@media(max-height:680px){
+    .hero{
+        padding:19px;
+    }
+
+    .connectCircle{
+        width:125px;
+        height:125px;
+        margin:15px auto;
+    }
+
+    .connection{
+        padding:15px;
+    }
+
+    .heroTitle{
+        font-size:24px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -305,299 +707,277 @@ body{
 <div class="app">
 
 <header class="header">
+    <div class="logo">
+        <div class="logoMark">V2</div>
+        <div>
+            <div class="logoText">V2GURD</div>
+            <div class="logoSub">SECURE • FAST • STABLE</div>
+        </div>
+    </div>
 
-<div class="logo">V2GURD</div>
-
-<div class="online">
-● سیستم آماده
-</div>
-
+    <div class="profile" onclick="openPage('account')">♙</div>
 </header>
 
+<main class="content">
 
-<main id="home" class="page">
+<!-- HOME -->
+<section id="home" class="page active">
 
-<div class="title">
-داشبورد
-</div>
+    <div class="hero">
+        <div class="heroSmall">WELCOME TO V2GURD</div>
+        <div class="heroTitle">اینترنت آزاد،<br>بدون دردسر.</div>
+        <div class="heroText">
+            با V2GURD اتصال خودت رو مدیریت کن و
+            با یک لمس به شبکه متصل شو.
+        </div>
+        <div class="heroOrb"></div>
+    </div>
 
-<section class="hero">
+    <div class="connection">
 
-<div class="hero-small">
-اتصال امن V2GURD
-</div>
+        <div class="connectionTop">
+            <div class="status">
+                <span id="statusDot" class="dot"></span>
+                <span id="statusText">قطع شده</span>
+            </div>
 
-<h1 id="status">
-آماده اتصال
-</h1>
+            <div class="server" id="serverText">
+                V2GURD NETWORK
+            </div>
+        </div>
 
-<p>
-سرویس خودت را انتخاب کن، Subscription را وارد کن
-و از داخل اپ مدیریت کن.
-</p>
+        <div class="connectCircle">
+            <div class="connectInner" onclick="toggleConnection()">
+                <div class="power">⏻</div>
+                <div class="connectLabel" id="connectLabel">اتصال</div>
+            </div>
+        </div>
 
-<button
-    id="connectBtn"
-    class="connect"
-    onclick="toggleConnection()"
->
-اتصال
-</button>
+        <div class="connectionBottom">
+            <div class="protection">
+                <span class="shield">🛡</span>
+                محافظت فعال
+            </div>
+
+            <div id="ipText">IP: —</div>
+        </div>
+
+    </div>
+
+    <div class="sectionHead">
+        <div class="sectionTitle">سرویس‌های V2GURD</div>
+        <div class="sectionMore" onclick="openPage('store')">مشاهده همه</div>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="cardIcon">⚡</div>
+            <div class="cardTitle">اتصال سریع</div>
+            <div class="cardText">
+                اتصال سریع و ساده با یک لمس.
+            </div>
+            <div class="cardGlow"></div>
+        </div>
+
+        <div class="card">
+            <div class="cardIcon">◉</div>
+            <div class="cardTitle">چند موقعیت</div>
+            <div class="cardText">
+                دسترسی به شبکه‌های مختلف.
+            </div>
+            <div class="cardGlow"></div>
+        </div>
+
+        <div class="card">
+            <div class="cardIcon">♢</div>
+            <div class="cardTitle">پایدار</div>
+            <div class="cardText">
+                طراحی شده برای اتصال پایدار.
+            </div>
+            <div class="cardGlow"></div>
+        </div>
+
+        <div class="card">
+            <div class="cardIcon">♙</div>
+            <div class="cardTitle">پشتیبانی</div>
+            <div class="cardText">
+                پشتیبانی V2GURD همیشه در دسترس.
+            </div>
+            <div class="cardGlow"></div>
+        </div>
+
+    </div>
+
+    <div class="sectionHead">
+        <div class="sectionTitle">پیشنهادهای ویژه</div>
+        <div class="sectionMore" onclick="openPage('store')">فروشگاه</div>
+    </div>
+
+    <div class="products">
+
+        <div class="product">
+            <div class="productIcon">V2</div>
+            <div class="productName">V2Box</div>
+            <div class="productDesc">
+                سرویس حرفه‌ای V2GURD
+            </div>
+            <div class="productBottom">
+                <div class="price">مشاهده قیمت</div>
+                <button class="buy" onclick="openPage('store')">
+                    خرید
+                </button>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="productIcon">∞</div>
+            <div class="productName">Unlimited</div>
+            <div class="productDesc">
+                اتصال بدون محدودیت
+            </div>
+            <div class="productBottom">
+                <div class="price">مشاهده قیمت</div>
+                <button class="buy" onclick="openPage('store')">
+                    خرید
+                </button>
+            </div>
+        </div>
+
+    </div>
 
 </section>
 
 
-<div class="stats">
+<!-- STORE -->
+<section id="store" class="page">
 
-<div class="stat">
-<span class="muted">وضعیت</span>
-<b id="state">
-قطع
-</b>
-</div>
+    <div class="storeHero">
+        <h2>فروشگاه V2GURD</h2>
+        <p>
+            سرویس مناسب خودت رو انتخاب کن و
+            از داخل اپ مدیریت کن.
+        </p>
+    </div>
 
-<div class="stat">
-<span class="muted">سرور</span>
-<b id="server">
-انتخاب نشده
-</b>
-</div>
+    <div class="storeGrid">
 
-</div>
+        <div class="storeItem">
+            <div class="storeItemIcon">V2</div>
+            <div class="storeInfo">
+                <div class="storeName">V2Box</div>
+                <div class="storeDesc">سرویس حرفه‌ای و پایدار</div>
+            </div>
+            <button class="storeBtn" onclick="buy('V2Box')">
+                انتخاب
+            </button>
+        </div>
 
+        <div class="storeItem">
+            <div class="storeItemIcon">↯</div>
+            <div class="storeInfo">
+                <div class="storeName">JumpJump</div>
+                <div class="storeDesc">اتصال با IP ثابت</div>
+            </div>
+            <button class="storeBtn" onclick="buy('JumpJump')">
+                انتخاب
+            </button>
+        </div>
 
-<div class="card">
+        <div class="storeItem">
+            <div class="storeItemIcon">∞</div>
+            <div class="storeInfo">
+                <div class="storeName">V2GURD Unlimited</div>
+                <div class="storeDesc">زمان و حجم نامحدود</div>
+            </div>
+            <button class="storeBtn" onclick="buy('Unlimited')">
+                انتخاب
+            </button>
+        </div>
 
-<div class="card-title">
-Subscription
-</div>
+    </div>
 
-<div class="muted">
-لینک اشتراک سرویس خودت را وارد کن.
-</div>
-
-<input
-    id="subInput"
-    class="input"
-    placeholder="https://..."
->
-
-<button
-    class="primary"
-    onclick="saveSubscription()"
->
-ذخیره Subscription
-</button>
-
-<div
-    id="saved"
-    class="muted success"
-    style="margin-top:10px"
-></div>
-
-</div>
-
-</main>
+</section>
 
 
-<main id="store" class="page hidden">
+<!-- ACCOUNT -->
+<section id="account" class="page">
 
-<div class="title">
-فروشگاه
-</div>
+    <div class="accountBox">
 
-<div class="products">
+        <div class="avatar">V2</div>
 
-<div class="product">
+        <div class="accountName">
+            V2GURD User
+        </div>
 
-<div class="product-top">
+        <div class="accountText">
+            مدیریت سرویس و حساب کاربری
+        </div>
 
-<div class="product-name">
-V2Box
-</div>
+    </div>
 
-<div class="product-tag">
-POPULAR
-</div>
+    <div class="menu">
 
-</div>
+        <div class="menuItem" onclick="showToast('بخش سرویس‌های من به‌زودی فعال می‌شود')">
+            <div class="menuRight">
+                <div class="menuIcon">◉</div>
+                سرویس‌های من
+            </div>
+            <span>‹</span>
+        </div>
 
-<div class="product-desc">
-سرویس حرفه‌ای با چندین لوکیشن و اتصال پایدار.
-</div>
+        <div class="menuItem" onclick="showToast('پشتیبانی V2GURD')">
+            <div class="menuRight">
+                <div class="menuIcon">?</div>
+                پشتیبانی
+            </div>
+            <span>‹</span>
+        </div>
 
-<div class="price">
-قیمت محصول
-</div>
+        <div class="menuItem" onclick="showToast('نسخه 1.0.0')">
+            <div class="menuRight">
+                <div class="menuIcon">ⓘ</div>
+                درباره V2GURD
+            </div>
+            <span>1.0.0</span>
+        </div>
 
-<button
-    class="buy"
-    onclick="buy('V2Box')"
->
-خرید سرویس
-</button>
+    </div>
 
-</div>
-
-
-<div class="product">
-
-<div class="product-top">
-
-<div class="product-name">
-JumpJump
-</div>
-
-<div class="product-tag">
-FIXED IP
-</div>
-
-</div>
-
-<div class="product-desc">
-سرویس اتصال اختصاصی با IP ثابت.
-</div>
-
-<div class="price">
-قیمت محصول
-</div>
-
-<button
-    class="buy"
-    onclick="buy('JumpJump')"
->
-خرید سرویس
-</button>
-
-</div>
-
-
-<div class="product">
-
-<div class="product-top">
-
-<div class="product-name">
-V2GURD Unlimited
-</div>
-
-<div class="product-tag">
-SPECIAL
-</div>
-
-</div>
-
-<div class="product-desc">
-سرویس ویژه V2GURD با شرایط اختصاصی.
-</div>
-
-<div class="price">
-قیمت محصول
-</div>
-
-<button
-    class="buy"
-    onclick="buy('V2GURD Unlimited')"
->
-خرید سرویس
-</button>
-
-</div>
-
-</div>
+</section>
 
 </main>
 
 
-<main id="services" class="page hidden">
-
-<div class="title">
-سرویس من
-</div>
-
-<div class="card">
-
-<div class="card-title">
-سرویس فعال
-</div>
-
-<div
-    id="serviceText"
-    class="muted"
->
-هنوز Subscription اضافه نکرده‌ای.
-</div>
-
-<button
-    class="secondary"
-    onclick="copySubscription()"
->
-کپی Subscription
-</button>
-
-</div>
-
-</main>
-
-
-<main id="account" class="page hidden">
-
-<div class="title">
-حساب
-</div>
-
-<div class="card">
-
-<div class="card-title">
-V2GURD
-</div>
-
-<div class="muted">
-مدیریت سرویس، Subscription و پشتیبانی.
-</div>
-
-<button
-    class="primary"
-    onclick="support()"
->
-پشتیبانی تلگرام
-</button>
-
-</div>
-
-</main>
-
+<!-- NAV -->
 
 <nav class="bottom">
 
-<button
-    class="nav active"
-    onclick="page('home',this)"
->
-خانه
-</button>
+    <div class="navItem active"
+         id="navHome"
+         onclick="openPage('home')">
+        <div class="navIcon">⌂</div>
+        خانه
+    </div>
 
-<button
-    class="nav"
-    onclick="page('store',this)"
->
-فروشگاه
-</button>
+    <div class="navItem"
+         id="navStore"
+         onclick="openPage('store')">
+        <div class="navIcon">◈</div>
+        فروشگاه
+    </div>
 
-<button
-    class="nav"
-    onclick="page('services',this)"
->
-سرویس من
-</button>
-
-<button
-    class="nav"
-    onclick="page('account',this)"
->
-حساب
-</button>
+    <div class="navItem"
+         id="navAccount"
+         onclick="openPage('account')">
+        <div class="navIcon">♙</div>
+        حساب
+    </div>
 
 </nav>
+
+<div id="toast" class="toast"></div>
 
 </div>
 
@@ -606,192 +986,133 @@ V2GURD
 
 let connected = false;
 
-let subscription =
-    localStorage.getItem("v2gurd_sub") || "";
+function openPage(page){
 
-
-function page(name, element){
-
-    document
-        .querySelectorAll("main")
-        .forEach(x => x.classList.add("hidden"));
-
-    document
-        .getElementById(name)
-        .classList.remove("hidden");
-
-    document
-        .querySelectorAll(".nav")
+    document.querySelectorAll(".page")
         .forEach(x => x.classList.remove("active"));
 
-    element.classList.add("active");
+    document.getElementById(page)
+        .classList.add("active");
+
+    document.querySelectorAll(".navItem")
+        .forEach(x => x.classList.remove("active"));
+
+    if(page === "home"){
+        document.getElementById("navHome")
+            .classList.add("active");
+    }
+
+    if(page === "store"){
+        document.getElementById("navStore")
+            .classList.add("active");
+    }
+
+    if(page === "account"){
+        document.getElementById("navAccount")
+            .classList.add("active");
+    }
+
+    document.querySelector(".content").scrollTop = 0;
 }
 
 
 function toggleConnection(){
 
-    if(!subscription){
-
-        alert(
-            "اول Subscription سرویس خودت را وارد کن."
-        );
-
-        return;
-    }
-
-    connected = !connected;
-
-    const status =
-        document.getElementById("status");
-
-    const state =
-        document.getElementById("state");
-
-    const button =
-        document.getElementById("connectBtn");
+    /*
+     * این قسمت فعلاً فقط UI است.
+     * بعداً همین دکمه به Android VpnService
+     * متصل می‌شود.
+     */
 
     if(connected){
 
-        status.innerText =
-            "در حال اتصال...";
+        connected = false;
 
-        state.innerText =
-            "در حال اتصال";
+        document.getElementById("statusText")
+            .innerText = "قطع شده";
 
-        button.innerText =
-            "در حال اتصال";
+        document.getElementById("connectLabel")
+            .innerText = "اتصال";
 
-        setTimeout(() => {
+        document.getElementById("statusDot")
+            .classList.remove("connected");
 
-            status.innerText =
-                "متصل";
+        document.getElementById("serverText")
+            .innerText = "V2GURD NETWORK";
 
-            state.innerText =
-                "متصل";
+        document.getElementById("ipText")
+            .innerText = "IP: —";
 
-            button.innerText =
-                "قطع اتصال";
+        showToast("اتصال قطع شد");
 
-            button.classList.add("connected");
-
-            document.getElementById("server")
-                .innerText =
-                "Auto";
-
-        },1200);
+        if(window.Android && Android.disconnect){
+            Android.disconnect();
+        }
 
     }else{
 
-        status.innerText =
-            "آماده اتصال";
+        connected = true;
 
-        state.innerText =
-            "قطع";
+        document.getElementById("statusText")
+            .innerText = "متصل";
 
-        button.innerText =
-            "اتصال";
+        document.getElementById("connectLabel")
+            .innerText = "قطع اتصال";
 
-        button.classList.remove("connected");
+        document.getElementById("statusDot")
+            .classList.add("connected");
 
-        document.getElementById("server")
-            .innerText =
-            "انتخاب نشده";
+        document.getElementById("serverText")
+            .innerText = "V2GURD • ONLINE";
+
+        document.getElementById("ipText")
+            .innerText = "IP: محافظت شده";
+
+        showToast("در حال اتصال به V2GURD...");
+
+        if(window.Android && Android.connect){
+            Android.connect();
+        }
+
     }
-}
-
-
-function saveSubscription(){
-
-    const value =
-        document
-        .getElementById("subInput")
-        .value
-        .trim();
-
-    if(!value){
-
-        alert(
-            "لینک Subscription را وارد کن."
-        );
-
-        return;
-    }
-
-    subscription = value;
-
-    localStorage.setItem(
-        "v2gurd_sub",
-        value
-    );
-
-    document
-        .getElementById("saved")
-        .innerText =
-        "✓ Subscription ذخیره شد";
-
-    document
-        .getElementById("serviceText")
-        .innerText =
-        "Subscription فعال است.";
-
-}
-
-
-function copySubscription(){
-
-    if(!subscription){
-
-        alert(
-            "هنوز Subscription ثبت نشده."
-        );
-
-        return;
-    }
-
-    navigator.clipboard
-        .writeText(subscription);
-
-    alert(
-        "Subscription کپی شد."
-    );
 }
 
 
 function buy(product){
 
-    alert(
-        "خرید " +
-        product +
-        "\\n\\nقیمت و پرداخت را در مرحله بعدی به اطلاعات واقعی سایت V2GURD وصل می‌کنیم."
-    );
+    showToast(product + " انتخاب شد");
 
+    setTimeout(() => {
+
+        if(window.Android && Android.openTelegram){
+            Android.openTelegram();
+        }else{
+            window.location.href =
+                "https://t.me/Vtwoguard";
+        }
+
+    },700);
 }
 
 
-function support(){
+function showToast(message){
 
-    window.location.href =
-        "https://t.me/Vtwoguard";
+    const toast =
+        document.getElementById("toast");
 
-}
+    toast.innerText = message;
 
+    toast.classList.add("show");
 
-if(subscription){
+    clearTimeout(window.toastTimer);
 
-    document
-        .getElementById("subInput")
-        .value =
-        subscription;
-
-    document
-        .getElementById("serviceText")
-        .innerText =
-        "Subscription فعال است.";
-
+    window.toastTimer =
+        setTimeout(() => {
+            toast.classList.remove("show");
+        },2200);
 }
 
 </script>
 
 </body>
-
 </html>
