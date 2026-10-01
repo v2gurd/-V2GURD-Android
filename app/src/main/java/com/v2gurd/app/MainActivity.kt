@@ -108,10 +108,25 @@ class MainActivity : AppCompatActivity() {
     private var currentPage = "home"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(androidx.appcompat.R.style.Theme_AppCompat_Light_NoActionBar)
         super.onCreate(savedInstanceState)
+        try {
+            buildUi()
+        } catch (e: Throwable) {
+            val tv = TextView(this)
+            tv.text = "خطا:\n" + android.util.Log.getStackTraceString(e)
+            tv.textSize = 11f
+            tv.setTextColor(Color.BLACK)
+            tv.setTextIsSelectable(true)
+            tv.setPadding(dp(16), dp(40), dp(16), dp(16))
+            val sv = ScrollView(this)
+            sv.addView(tv)
+            setContentView(sv)
+        }
+    }
 
+    private fun buildUi() {
         window.statusBarColor = Color.WHITE
-        @Suppress("DEPRECATION")
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
         val root = LinearLayout(this)
@@ -575,7 +590,7 @@ class MainActivity : AppCompatActivity() {
     private fun addToCart(id: String, title: String, price: Long) {
         val ex = cart[id]
         if (ex != null) ex.qty++ else cart[id] = CartItem(id, title, price, 1)
-        cartBtn.text = "🛒 ${fa(cart.values.sumOf { it.qty })}"
+        cartBtn.text = "🛒 ${fa(cart.values.fold(0) { acc, it -> acc + it.qty })}"
         toast("محصول به سبد خرید اضافه شد")
     }
 
@@ -584,7 +599,7 @@ class MainActivity : AppCompatActivity() {
             toast("سبد خرید خالی است")
             return
         }
-        val total = cart.values.sumOf { it.price * it.qty }
+        val total = cart.values.fold(0L) { acc, it -> acc + it.price * it.qty }
         val lines = cart.values.joinToString("\n\n") { "• ${it.title} × ${fa(it.qty)}\n   ${fa(it.price * it.qty)} تومان" }
         val msg = "$lines\n\nمبلغ نهایی: ${fa(total)} تومان"
 
